@@ -1,16 +1,27 @@
-<p style="color: green"><%= notice %></p>
+<div class="container my-4">
 
-<% content_for :title, "Products" %>
-
-<h1>Products</h1>
-
-<div id="products">
-  <% @products.each do |product| %>
-    <%= render product %>
-    <p>
-      <%= link_to "Show this product", product %>
-    </p>
+  <%# 1. Mensagem de notice (ex: "Produto criado com sucesso") %>
+  <% if notice.present? %>
+    <p class="alert alert-success" role="alert"><%= notice %></p>
   <% end %>
-</div>
 
-<%= link_to "New product", new_product_path %>
+  <%# 2. Título da página e botão de Novo Produto %>
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="mb-0">🐾 Nossos Produtos</h1>
+    
+    <%# Link "New product" estilizado como botão %>
+    <%= link_to "Cadastrar Produto", new_product_path, class: "btn btn-primary" %>
+  </div>
+
+  <%# 3. Grid de Produtos %>
+  <div id="products" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    
+    <%# O loop agora só precisa renderizar o partial %>
+    <% @products.each do |product| %>
+      <div class="col">
+        <%= render product %> 
+      </div>
+    <% end %>
+
+  </div>
+</div>
