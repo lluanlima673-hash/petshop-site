@@ -1,0 +1,11 @@
+<% content_for :title, "New veterinarian" %>
+
+<h1>New veterinarian</h1>
+
+<%= render "form", veterinarian: @veterinarian %>
+
+<br>
+
+<div>
+  <%= link_to "Back to veterinarians", veterinarians_path %>
+</div>

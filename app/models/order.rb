@@ -1,0 +1,7 @@
+class Order < ApplicationRecord
+  belongs_to :customer, optional: true
+  has_many :order_items, dependent: :destroy
+  accepts_nested_attributes_for :order_items, allow_destroy: true
+  validates :status, presence: true
+end
+
